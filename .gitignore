@@ -1,0 +1,9 @@
+# Local dev tools (sync-upstream, etc.)
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/

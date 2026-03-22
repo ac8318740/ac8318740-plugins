@@ -1,0 +1,17 @@
+{
+  "name": "ac8318740-plugins",
+  "owner": {
+    "name": "ac8318740"
+  },
+  "metadata": {
+    "description": "Claude Code plugins by ac8318740.",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "spechub",
+      "source": "spechub",
+      "description": "Spec-driven TDD workflow with OpenSpec integration, strict orchestrator pattern, and three-phase implementation pipeline (test-writer, task-executor, task-checker)."
+    }
+  ]
+}
