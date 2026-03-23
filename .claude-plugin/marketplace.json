@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "spechub",
-      "source": "spechub",
+      "source": "./plugins/spechub",
       "description": "Spec-driven TDD workflow with strict orchestrator pattern and three-phase implementation pipeline (test-writer, task-executor, task-checker).",
       "repository": "https://github.com/ac8318740/spechub"
     }
