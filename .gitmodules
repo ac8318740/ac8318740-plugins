@@ -1,0 +1,3 @@
+[submodule "plugins/spechub"]
+	path = plugins/spechub
+	url = https://github.com/ac8318740/spechub.git

@@ -11,7 +11,8 @@
     {
       "name": "spechub",
       "source": "spechub",
-      "description": "Spec-driven TDD workflow with OpenSpec integration, strict orchestrator pattern, and three-phase implementation pipeline (test-writer, task-executor, task-checker)."
+      "description": "Spec-driven TDD workflow with strict orchestrator pattern and three-phase implementation pipeline (test-writer, task-executor, task-checker).",
+      "repository": "https://github.com/ac8318740/spechub"
     }
   ]
 }
