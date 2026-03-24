@@ -11,7 +11,7 @@ A Claude Code plugin marketplace at `ac8318740/ac8318740-plugins`. The main plug
 .gitmodules                      – Submodule references
 plugins/spechub/                 – Submodule: ac8318740/spechub
 .claude/skills/commit/           – Dev skill: commit and push to one or both repos
-.claude/skills/sync-upstream/    – Dev skill: sync upstream project workflow changes into SpecHub (gitignored)
+.claude/skills/sync-upstream/    – Dev skill: sync upstream workflow changes into SpecHub (gitignored)
 ```
 
 ## Writing Standards
@@ -37,16 +37,14 @@ To make changes to SpecHub:
 
 Commits to spechub, the marketplace parent, or both. Auto-detects which repos have changes. Enforces writing standards on commit messages. See `.claude/skills/commit/SKILL.md`.
 
-### `/sync-upstream` – Sync from upstream project
+### `/sync-upstream` – Sync from upstream
 
-Pulls workflow changes from `~/upstream project/.claude/` into SpecHub. Diffs, classifies changes as generalizable vs upstream project-specific, presents each for approval. This skill is gitignored – it's a development tool, not part of the published plugin.
+Pulls workflow changes from the upstream project into SpecHub. Diffs, classifies changes as generalizable vs project-specific, presents each for approval. This skill is gitignored – it's a development tool, not part of the published plugin.
 
 ## Key Context
 
 - **Author pseudonym**: `ac8318740`
-- **upstream project** (`~/upstream project`) is the upstream source – workflow innovations happen there first, then get generalized into SpecHub via sync-upstream
 - **OpenSpec CLI** is being forked/rebranded as **SpecHub CLI** (MIT license allows this). The rename from `openspec` to `spechub` is in progress.
-- Both repos are **private** for now
 
 ## Commands
 
