@@ -12,7 +12,6 @@ A Claude Code plugin marketplace at `ac8318740/ac8318740-plugins`. The main plug
 plugins/spechub/                 – Submodule: ac8318740/spechub
 .claude/skills/commit/           – Dev skill: commit and push to one or both repos
 .claude/skills/sync-upstream/    – Dev skill: sync upstream project workflow changes into SpecHub (gitignored)
-HANDOFF.md                       – Historical context and design decisions
 ```
 
 ## Writing Standards
