@@ -12,7 +12,7 @@ Claude Code plugin marketplace.
 
 | Plugin | Description |
 |--------|-------------|
-| [SpecHub](./plugins/spechub/) | Spec-driven TDD workflow with three-phase implementation pipeline |
+| [SpecHub](https://github.com/ac8318740/spechub) | Spec-driven TDD workflow with three-phase implementation pipeline |
 
 Install a plugin:
 
