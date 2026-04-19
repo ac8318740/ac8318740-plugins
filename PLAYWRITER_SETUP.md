@@ -16,7 +16,7 @@ Windows laptop                                 Linux VM
 └───────────────────────────────┘              └──────────────────────────┘
 ```
 
-Why this shape: the corporate EDR flagged the old setup on the Chrome `--remote-debugging-port` listener being exposed to a remote host – the classic info-stealer C2 signature. With Playwriter, Chrome is driven through the extension's `chrome.debugger` API. **No debug port is opened on Chrome.** The only thing tunneled is a localhost Node dev server.
+Why this shape: Chrome runs normally – no `--remote-debugging-port`, no debug listener. The Playwriter extension drives the browser through the `chrome.debugger` API. The only thing tunneled is an outbound localhost Node relay over authenticated SSH. No inbound ports on the laptop.
 
 Key property: **Chrome never listens on a debug port.** If any step seems to require `--remote-debugging-port`, stop.
 
@@ -35,7 +35,7 @@ playwriter serve --host 127.0.0.1
 Window B – SSH reverse tunnel to the VM:
 
 ```powershell
-ssh -N -R 19988:127.0.0.1:19988 acoote@5.161.94.201
+ssh -N -R 19988:127.0.0.1:19988 <user>@<vm-host>
 ```
 
 Order: relay first, then tunnel.
@@ -50,7 +50,7 @@ Port `19988` is hardcoded in Playwriter – don't change it.
 
 ## Windows: Chrome profile + extension
 
-- Dedicated Chrome profile **Playwriter Dev** – do not sign in to anything (no Atlas, no work accounts).
+- Dedicated Chrome profile **Playwriter Dev** – do not sign in to anything. Keep it disposable so a VM compromise only exposes this profile.
 - Install the Playwriter extension in that profile:
   `https://chromewebstore.google.com/detail/playwriter-mcp/jfeammnjpkecdekppnclgkkffahnhfhe`
 - Pin the extension so the toolbar icon is visible.
@@ -130,7 +130,7 @@ Same relay-on-Chrome-host architecture; also exposes a CDP surface. Path:
 3. Use the same `ssh -N -R <port>:127.0.0.1:<port>` shape from the laptop.
 4. Update `AGENT_BROWSER_CDP` on the VM to the new port.
 
-If the EDR flags `ssh -R` generically regardless of payload, do not substitute `--remote-debugging-port` back – that was the original trigger. Escalate instead.
+Do not substitute `--remote-debugging-port` back under any circumstance – running Chrome with a debug listener is the exact shape this architecture is designed to avoid.
 
 ## Non-negotiables
 
