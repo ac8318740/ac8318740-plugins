@@ -13,6 +13,12 @@
       "source": "./plugins/spechub",
       "description": "Spec-driven TDD workflow with strict orchestrator pattern and three-phase implementation pipeline (test-writer, task-executor, task-checker).",
       "repository": "https://github.com/ac8318740/spechub"
+    },
+    {
+      "name": "open-designer",
+      "source": "./plugins/open-designer",
+      "description": "Local design loop – Claude writes HTML drafts, you click elements in a viewer to iterate.",
+      "repository": "https://github.com/ac8318740/ac8318740-plugins"
     }
   ]
 }

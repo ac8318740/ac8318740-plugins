@@ -7,3 +7,10 @@ Thumbs.db
 
 # Node
 node_modules/
+
+# open-designer test data (HTML drafts, init files generated while exercising the plugin locally)
+.open-designer/
+
+# Viewer build artifacts (rebuilt by the launcher / npm run build)
+plugins/open-designer/viewer/dist/
+plugins/open-designer/viewer/package-lock.json
