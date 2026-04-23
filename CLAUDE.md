@@ -44,8 +44,20 @@ Pulls workflow changes from the upstream project into SpecHub. Diffs, classifies
 ## Key Context
 
 - **Author pseudonym**: `ac8318740`
-- **OpenSpec CLI** is being forked/rebranded as **SpecHub CLI** (MIT license allows this). The rename from `openspec` to `spechub` is in progress.
+
+## Releasing open-designer
+
+**Critical**: `open-designer` ships as BOTH a Claude plugin AND an npm package (`open-designer`, used via `npx open-designer`). These two MUST stay in lock-step. If you bump the plugin version and forget to republish to npm, users on `npx open-designer` stay stuck on the old version.
+
+- Source of truth for the version is `plugins/open-designer/.claude-plugin/plugin.json`.
+- `plugins/open-designer/package.json` is synced from it automatically – never edit its `version` by hand.
+- To release: bump `plugin.json`, then from `plugins/open-designer/` run `npm run release`. This syncs the version, builds the viewer, and publishes.
+- Full details: `plugins/open-designer/RELEASING.md`.
+
+Any change under `plugins/open-designer/launcher/` or `plugins/open-designer/viewer/` that affects user-visible behavior requires a version bump + npm republish, not just a plugin-side commit.
 
 ## Commands
 
-No build/test/lint commands yet – the plugin is all markdown skills and agent definitions. The CLI (when built) will have its own test/build setup.
+No repo-wide build/test/lint yet – skills and agents are markdown. Per-plugin commands:
+
+- `plugins/open-designer/`: `npm run build:viewer`, `npm run sync-version`, `npm run release`.

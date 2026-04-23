@@ -15,5 +15,9 @@ node_modules/
 plugins/open-designer/viewer/dist/
 plugins/open-designer/viewer/package-lock.json
 
+# npm release artifacts
+plugins/open-designer/.npmrc.release
+plugins/open-designer/*.tgz
+
 # Reference files
 reference/
