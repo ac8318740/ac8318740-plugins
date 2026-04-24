@@ -45,6 +45,10 @@ Pulls workflow changes from the upstream project into SpecHub. Diffs, classifies
 
 - **Author pseudonym**: `ac8318740`
 
+## Browser Automation
+
+Use `agent-browser` (CDP-based, connects to the user's existing Chrome) for any browser interaction – snapshots, screenshots, clicks, form fills. Do not use the `webapp-testing` / Playwright skill in this repo; it launches its own headless browser and can't see the user's real session.
+
 ## Releasing open-designer
 
 **Critical**: `open-designer` ships as BOTH a Claude plugin AND an npm package (`open-designer-viewer`, used via `npx open-designer-viewer`). These two MUST stay in lock-step.

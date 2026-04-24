@@ -21,3 +21,13 @@ plugins/open-designer/*.tgz
 
 # Reference files
 reference/
+
+# Local planning docs
+plans/
+
+# Local browser-automation configs (machine-specific ports)
+agent-browser.json
+stagewise.json
+
+# Vite dev cache
+plugins/open-designer/viewer/.vite/
