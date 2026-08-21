@@ -1,24 +1,32 @@
 {
-  "name": "ac8318740-plugins",
+  "name": "ac-agentic-coding",
   "owner": {
-    "name": "ac8318740"
+    "name": "ac8318740",
+    "url": "https://github.com/ac8318740"
   },
   "metadata": {
-    "description": "Claude Code plugins by ac8318740.",
-    "pluginRoot": "./plugins"
+    "description": "AC's Agentic Coding Marketplace – plugins for spec-driven development and design work with coding agents."
   },
   "plugins": [
     {
       "name": "spechub",
-      "source": "./plugins/spechub",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/ac8318740/spechub.git",
+        "ref": "main"
+      },
       "description": "Spec-driven TDD workflow with strict orchestrator pattern and three-phase implementation pipeline (test-writer, task-executor, task-checker).",
       "repository": "https://github.com/ac8318740/spechub"
     },
     {
       "name": "open-designer",
-      "source": "./plugins/open-designer",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/ac8318740/open-designer.git",
+        "ref": "main"
+      },
       "description": "Local design loop – Claude writes HTML drafts, you click elements in a viewer to iterate.",
-      "repository": "https://github.com/ac8318740/ac8318740-plugins"
+      "repository": "https://github.com/ac8318740/open-designer"
     }
   ]
 }

@@ -1,15 +1,28 @@
-# ac8318740-plugins Development
+# ac-agentic-coding Development
 
 ## What This Repo Is
 
-A Claude Code plugin marketplace at `ac8318740/ac8318740-plugins`. The main plugin is **SpecHub**, which lives in its own repo (`ac8318740/spechub`) and is referenced here as a git submodule at `plugins/spechub/`.
+A plugin marketplace named **ac-agentic-coding**, hosted at
+`ac8318740/ac-agentic-coding`. It serves both Claude Code and Codex, which each
+read `.claude-plugin/marketplace.json` natively.
+
+The plugins live in their own repositories and are referenced by URL, not
+bundled:
+
+- **SpecHub** – `ac8318740/spechub`
+- **open-designer** – `ac8318740/open-designer`
+
+Both are also checked out here as git submodules, but that is purely a
+development convenience. Installs resolve through the `url` sources in
+`marketplace.json`, so releasing a plugin never means touching this repo.
 
 ## Repo Structure
 
 ```
-.claude-plugin/marketplace.json  – Plugin marketplace registry
-.gitmodules                      – Submodule references
+.claude-plugin/marketplace.json  – Marketplace registry (url sources)
+.gitmodules                      – Submodule references (dev convenience only)
 plugins/spechub/                 – Submodule: ac8318740/spechub
+plugins/open-designer/           – Submodule: ac8318740/open-designer
 .claude/skills/commit/           – Dev skill: commit and push to one or both repos
 .claude/skills/sync-upstream/    – Dev skill: sync upstream workflow changes into SpecHub (gitignored)
 ```
@@ -53,12 +66,12 @@ Use `agent-browser` (CDP-based, connects to the user's existing Chrome) for any 
 
 **Critical**: `open-designer` ships as BOTH a Claude plugin AND an npm package (`open-designer-viewer`, used via `npx open-designer-viewer`). These two MUST stay in lock-step.
 
-**The rule (no exceptions):** any user-visible change under `plugins/open-designer/` – skills, README, briefing docs, `launcher/`, `viewer/`, anything a plugin consumer would notice – requires a plugin version bump AND an npm republish in the same commit. "Docs only" and "skills only" both count as user-visible: the plugin cache on each user's machine only picks up changes on a version bump, so without one the new docs/skills never reach anyone.
+**The rule (no exceptions):** any user-visible change in the open-designer repo – skills, README, briefing docs, `launcher/`, `viewer/`, anything a plugin consumer would notice – requires a plugin version bump AND an npm republish in the same commit. "Docs only" and "skills only" both count as user-visible: the plugin cache on each user's machine only picks up changes on a version bump, so without one the new docs/skills never reach anyone.
 
-- Source of truth for the version is `plugins/open-designer/.claude-plugin/plugin.json`.
-- `plugins/open-designer/package.json` is synced from it automatically – never edit its `version` by hand.
-- To release: bump `plugin.json`, then from `plugins/open-designer/` run `npm run release`. This syncs the version, builds the viewer, and publishes.
-- Full details: `plugins/open-designer/RELEASING.md`.
+- Source of truth for the version is `.claude-plugin/plugin.json` in the open-designer repo.
+- `package.json` is synced from it automatically – never edit its `version` by hand.
+- To release: bump `plugin.json`, then run `npm run release` from the open-designer repo root. This syncs the version, builds the viewer, and publishes.
+- Full details: `RELEASING.md` in the open-designer repo.
 
 If you bump plugin.json and forget to republish to npm, users on `npx open-designer-viewer` stay stuck on the old version. If you change skills/docs without bumping plugin.json, users on any device never see the update.
 
@@ -66,4 +79,5 @@ If you bump plugin.json and forget to republish to npm, users on `npx open-desig
 
 No repo-wide build/test/lint yet – skills and agents are markdown. Per-plugin commands:
 
-- `plugins/open-designer/`: `npm run build:viewer`, `npm run sync-version`, `npm run release`.
+- open-designer repo: `npm run build:viewer`, `npm run sync-version`, `npm run release`.
+- spechub repo, `cli/`: `npm run build`, `npm test`, `npm run typecheck`. CI enforces that generated files are current.
