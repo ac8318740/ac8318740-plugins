@@ -11,13 +11,11 @@ node_modules/
 # open-designer test data (HTML drafts, init files generated while exercising the plugin locally)
 .open-designer/
 
-# Viewer build artifacts (rebuilt by the launcher / npm run build)
-plugins/open-designer/viewer/dist/
-plugins/open-designer/viewer/package-lock.json
-
-# npm release artifacts
-plugins/open-designer/.npmrc.release
-plugins/open-designer/*.tgz
+# Local clones of the plugins this marketplace points at. Nothing under here is
+# tracked: marketplace.json fetches each plugin from its own GitHub repo, so a
+# checkout here is a convenience for working on them side by side, never the
+# source the marketplace serves.
+plugins/
 
 # Reference files
 reference/
@@ -28,6 +26,3 @@ plans/
 # Local browser-automation configs (machine-specific ports)
 agent-browser.json
 stagewise.json
-
-# Vite dev cache
-plugins/open-designer/viewer/.vite/

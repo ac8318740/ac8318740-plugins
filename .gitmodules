@@ -1,6 +1,0 @@
-[submodule "plugins/spechub"]
-	path = plugins/spechub
-	url = https://github.com/ac8318740/spechub.git
-[submodule "plugins/open-designer"]
-	path = plugins/open-designer
-	url = https://github.com/ac8318740/open-designer.git
